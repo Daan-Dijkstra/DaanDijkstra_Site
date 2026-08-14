@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Pakt automatisch de eerste 3 projecten voor een preview op de homepage
+const alleProjecten = await getCollection('projecten');
+const uitgelicht = alleProjecten
+  .sort((a, b) => a.data.volgorde - b.data.volgorde)
+  .slice(0, 3);
+---
+
+<BaseLayout titel="Home" actief="home">
+  <section id="home">
+    <h2>Welkom</h2>
+    <p>
+      Ik ben een maker en ontwerper met een passie voor creativiteit en hergebruik.
+      Mijn werk richt zich op het creëren van duurzame en innovatieve projecten met
+      een breed scala aan materialen en technieken.
+    </p>
+    <p>
+      Mijn projecten zijn net zo divers als mijn ervaringen. Zo heb ik bijgedragen aan
+      het oprichten van verschillende inspirerende broedplaatsen in en rond Amsterdam.
+      Daarnaast heb ik internationaal gewerkt aan bouw- en ontwikkelingsprojecten in
+      onder andere Hawaï, Egypte, Uganda en België.
+    </p>
+    <p>
+      Naast creatieve projecten werk ik ook als aannemer aan kleinere bouwopdrachten.
+      Dit varieert van elektra- en loodgieterswerk tot ruwbouw, restauratie en
+      herstelwerkzaamheden aan woningen en bedrijfsruimtes.
+    </p>
+  </section>
+
+  <section id="portfolio-preview">
+    <h2>Uitgelichte projecten</h2>
+    <div class="gallery">
+      {uitgelicht.map((project) => (
+        <figure>
+          <a href={`/projecten/${project.slug}`}>
+            <img src={project.data.thumbnail} alt={project.data.title} />
+            <figcaption>{project.data.title}</figcaption>
+          </a>
+        </figure>
+      ))}
+    </div>
+    <p><a href="/portfolio">Bekijk mijn volledige portfolio &rarr;</a></p>
+  </section>
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projecten = await getCollection('projecten');
+  return projecten.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<BaseLayout titel={project.data.title} actief="portfolio" beschrijving={project.data.beschrijving}>
+  <section>
+    <h2>{project.data.title}</h2>
+    <p>{project.data.beschrijving}</p>
+    <Content />
+  </section>
+
+  <section>
+    <h3>Fotogalerij</h3>
+    <div class="project-fotos">
+      {project.data.fotos.map((foto) => (
+        <figure>
+          <img src={foto.src} alt={foto.alt} loading="lazy" />
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <p><a href="/portfolio">&larr; Terug naar portfolio</a></p>
+</BaseLayout>

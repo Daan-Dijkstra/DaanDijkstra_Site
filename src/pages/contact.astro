@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout titel="Contact" actief="contact" beschrijving="Neem contact op met Daan Dijkstra.">
+  <section>
+    <h2>Contact</h2>
+    <p>
+      Heb je een vraag over een project, of wil je iets laten maken of restaureren?
+      Stuur een bericht via onderstaand formulier.
+    </p>
+
+    <!--
+      Dit formulier gebruikt Web3Forms (gratis, geen backend nodig).
+      Stap 1: Ga naar https://web3forms.com en maak gratis een "Access Key" aan
+              met je e-mailadres (geen account nodig).
+      Stap 2: Vervang "JOUW_ACCESS_KEY_HIER" hieronder met die key.
+      Berichten komen dan direct in je mailbox, tot 250 verzendingen/maand gratis.
+    -->
+    <form action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="JOUW_ACCESS_KEY_HIER" />
+      <input type="hidden" name="subject" value="Nieuw bericht via daandijkstra.com" />
+
+      <label for="naam">Naam</label>
+      <input type="text" id="naam" name="naam" required />
+
+      <label for="email">E-mailadres</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="bericht">Bericht</label>
+      <textarea id="bericht" name="bericht" rows="6" required></textarea>
+
+      <button type="submit">Verstuur bericht</button>
+    </form>
+  </section>
+</BaseLayout>

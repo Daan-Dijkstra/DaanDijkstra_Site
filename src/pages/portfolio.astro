@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projecten = (await getCollection('projecten')).sort(
+  (a, b) => a.data.volgorde - b.data.volgorde
+);
+---
+
+<BaseLayout titel="Portfolio" actief="portfolio" beschrijving="Overzicht van alle projecten van Daan Dijkstra.">
+  <section>
+    <h2>Mijn Projecten en Producten</h2>
+    <p>
+      Klik op een project voor meer foto's en uitleg.
+    </p>
+    <div class="gallery">
+      {projecten.map((project) => (
+        <figure>
+          <a href={`/projecten/${project.slug}`}>
+            <img src={project.data.thumbnail} alt={project.data.title} />
+            <figcaption>{project.data.title}</figcaption>
+          </a>
+        </figure>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
