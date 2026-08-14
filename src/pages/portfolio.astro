@@ -7,12 +7,11 @@ const projecten = (await getCollection('projecten')).sort(
 );
 ---
 
-<BaseLayout titel="Portfolio" actief="portfolio" beschrijving="Overzicht van alle projecten van Daan Dijkstra.">
-  <section>
-    <h2>Mijn Projecten en Producten</h2>
-    <p>
-      Klik op een project voor meer foto's en uitleg.
-    </p>
+<BaseLayout titel="Portfolio" actief="portfolio" beschrijving="Overzicht van alle projecten van DD-Industries, Daan Dijkstra.">
+  <section style="border-top: none; padding-top: 3rem;">
+    <span class="section-label">Portfolio</span>
+    <h2 class="section-titel">Mijn projecten en producten</h2>
+    <p>Klik op een project voor meer foto's en uitleg.</p>
     <div class="gallery">
       {projecten.map((project) => (
         <figure>

@@ -15,14 +15,15 @@ const { Content } = await project.render();
 ---
 
 <BaseLayout titel={project.data.title} actief="portfolio" beschrijving={project.data.beschrijving}>
-  <section>
-    <h2>{project.data.title}</h2>
+  <section style="border-top: none; padding-top: 3rem;">
+    <span class="section-label">Project</span>
+    <h2 class="section-titel">{project.data.title}</h2>
     <p>{project.data.beschrijving}</p>
     <Content />
   </section>
 
   <section>
-    <h3>Fotogalerij</h3>
+    <span class="section-label">Fotogalerij</span>
     <div class="project-fotos">
       {project.data.fotos.map((foto) => (
         <figure>
@@ -32,5 +33,5 @@ const { Content } = await project.render();
     </div>
   </section>
 
-  <p><a href="/portfolio">&larr; Terug naar portfolio</a></p>
+  <p><a href="/portfolio" class="btn btn-secundair">&larr; Terug naar portfolio</a></p>
 </BaseLayout>

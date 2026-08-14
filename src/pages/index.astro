@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-// Pakt automatisch de eerste 3 projecten voor een preview op de homepage
 const alleProjecten = await getCollection('projecten');
 const uitgelicht = alleProjecten
   .sort((a, b) => a.data.volgorde - b.data.volgorde)
@@ -10,28 +9,39 @@ const uitgelicht = alleProjecten
 ---
 
 <BaseLayout titel="Home" actief="home">
-  <section id="home">
-    <h2>Welkom</h2>
+  <section class="hero">
+    <span class="hero-eyebrow">Maker &middot; Bouwer &middot; Hergebruiker</span>
+    <h2>Nieuw leven voor <span class="accent">oud materiaal</span></h2>
+    <p class="hero-sub">
+      Ambachtelijk maatwerk uit herwonnen hout en staal. Van bootbanken tot
+      volledige restauraties &mdash; gebouwd om te blijven, niet om te vervangen.
+    </p>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="/portfolio" class="btn btn-primair">Bekijk mijn werk</a>
+      <a href="/contact" class="btn btn-secundair">Neem contact op</a>
+    </div>
+  </section>
+
+  <section id="over">
+    <span class="section-label">Over DD-Industries</span>
+    <h2 class="section-titel">Vakmanschap met een verhaal</h2>
     <p>
       Ik ben een maker en ontwerper met een passie voor creativiteit en hergebruik.
-      Mijn werk richt zich op het creëren van duurzame en innovatieve projecten met
-      een breed scala aan materialen en technieken.
+      Mijn werk richt zich op duurzame, innovatieve projecten met een breed scala
+      aan materialen en technieken &mdash; van het opzetten van broedplaatsen in en
+      rond Amsterdam tot bouw- en ontwikkelingsprojecten in Hawa&iuml;, Egypte,
+      Uganda en Belgi&euml;.
     </p>
     <p>
-      Mijn projecten zijn net zo divers als mijn ervaringen. Zo heb ik bijgedragen aan
-      het oprichten van verschillende inspirerende broedplaatsen in en rond Amsterdam.
-      Daarnaast heb ik internationaal gewerkt aan bouw- en ontwikkelingsprojecten in
-      onder andere Hawaï, Egypte, Uganda en België.
-    </p>
-    <p>
-      Naast creatieve projecten werk ik ook als aannemer aan kleinere bouwopdrachten.
-      Dit varieert van elektra- en loodgieterswerk tot ruwbouw, restauratie en
-      herstelwerkzaamheden aan woningen en bedrijfsruimtes.
+      Naast creatieve projecten werk ik als aannemer aan kleinere bouwopdrachten:
+      elektra, loodgieterswerk, ruwbouw, restauratie en herstel. Altijd met oog
+      voor kwaliteit, vakmanschap en een persoonlijke aanpak.
     </p>
   </section>
 
   <section id="portfolio-preview">
-    <h2>Uitgelichte projecten</h2>
+    <span class="section-label">Uitgelicht</span>
+    <h2 class="section-titel">Recente projecten</h2>
     <div class="gallery">
       {uitgelicht.map((project) => (
         <figure>
@@ -42,6 +52,6 @@ const uitgelicht = alleProjecten
         </figure>
       ))}
     </div>
-    <p><a href="/portfolio">Bekijk mijn volledige portfolio &rarr;</a></p>
+    <p style="margin-top: 1.5rem;"><a href="/portfolio" class="btn btn-secundair">Volledige portfolio &rarr;</a></p>
   </section>
 </BaseLayout>
