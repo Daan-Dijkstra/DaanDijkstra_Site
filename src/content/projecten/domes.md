@@ -1,14 +1,14 @@
 ---
 title: "Domes"
-thumbnail: "/images/domes1.jpg"
+thumbnail: "/images/domes/domes.jpg"
 beschrijving: "Geodetische koepels gebouwd van herwonnen staal, van Nederlandse festivals tot een permacultuur-farm in Oeganda."
 volgorde: 3
 fotos:
-  - src: "/images/domes1.jpg"
+  - src: "/images/domes/domes.jpg"
     alt: "Domes - aanzicht 1"
-  - src: "/images/domes2.jpg"
+  - src: "/images/domes/domes (1).jpg"
     alt: "Domes - aanzicht 2"
-  - src: "/images/domes3.jpg"
+  - src: "/images/domes/domes (2).jpg"
     alt: "Domes - aanzicht 3"
 ---
 

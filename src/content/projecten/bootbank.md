@@ -1,18 +1,18 @@
 ---
 title: "Bootbank"
-thumbnail: "/images/bootbank1.jpg"
+thumbnail: "/images/bootbank/bootbank.jpg"
 beschrijving: "De Bootbank is een uniek ontwerp gemaakt van hergebruikte materialen. Het project toont creativiteit en duurzaamheid in één."
 volgorde: 1
 fotos:
-  - src: "/images/bootbank1.jpg"
+  - src: "/images/bootbank/bootbank.jpg"
     alt: "Bootbank - aanzicht 1"
-  - src: "/images/bootbank2.jpg"
+  - src: "/images/bootbank/bootbank (1).jpg"
     alt: "Bootbank - aanzicht 2"
-  - src: "/images/bootbank3.jpg"
+  - src: "/images/bootbank/bootbank (2).jpg"
     alt: "Bootbank - aanzicht 3"
-  - src: "/images/bootbank4.jpg"
+  - src: "/images/bootbank/bootbank (3).jpg"
     alt: "Bootbank - aanzicht 4"
-  - src: "/images/bootbank5.jpg"
+  - src: "/images/bootbank/bootbank (4).jpg"
     alt: "Bootbank - aanzicht 5"
 ---
 
