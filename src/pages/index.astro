@@ -3,10 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { bepaalThumbnail } from '../lib/project-images';
 
-const alleProjecten = await getCollection('projecten');
-const uitgelicht = alleProjecten
-  .sort((a, b) => a.data.volgorde - b.data.volgorde)
-  .slice(0, 3);
+const projecten = (await getCollection('projecten')).sort(
+  (a, b) => a.data.volgorde - b.data.volgorde
+);
 ---
 
 <BaseLayout titel="Home" actief="home">
@@ -18,7 +17,7 @@ const uitgelicht = alleProjecten
       volledige restauraties &mdash; gebouwd om te blijven, niet om te vervangen.
     </p>
     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-      <a href="/portfolio" class="btn btn-primair">Bekijk mijn werk</a>
+      <a href="#projecten" class="btn btn-primair">Bekijk mijn werk</a>
       <a href="/contact" class="btn btn-secundair">Neem contact op</a>
     </div>
   </section>
@@ -40,11 +39,11 @@ const uitgelicht = alleProjecten
     </p>
   </section>
 
-  <section id="portfolio-preview">
-    <span class="section-label">Uitgelicht</span>
-    <h2 class="section-titel">Recente projecten</h2>
+  <section id="projecten">
+    <span class="section-label">Portfolio</span>
+    <h2 class="section-titel">Mijn projecten</h2>
     <div class="gallery">
-      {uitgelicht.map((project) => {
+      {projecten.map((project) => {
         const thumb = bepaalThumbnail(project.data);
         return (
           <figure>
@@ -56,6 +55,5 @@ const uitgelicht = alleProjecten
         );
       })}
     </div>
-    <p style="margin-top: 1.5rem;"><a href="/portfolio" class="btn btn-secundair">Volledige portfolio &rarr;</a></p>
   </section>
 </BaseLayout>

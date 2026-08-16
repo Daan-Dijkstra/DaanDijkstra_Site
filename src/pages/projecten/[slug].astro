@@ -58,5 +58,80 @@ const enkeleFotos = project.data.map
     </section>
   )}
 
-  <p><a href="/portfolio" class="btn btn-secundair">&larr; Terug naar portfolio</a></p>
+  <p><a href="/#projecten" class="btn btn-secundair">&larr; Terug naar portfolio</a></p>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-sluit" id="lightboxSluit" aria-label="Sluiten">&times; Sluiten</button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
 </BaseLayout>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg') as HTMLImageElement;
+  const sluitKnop = document.getElementById('lightboxSluit');
+
+  function open(src: string, alt: string) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox?.classList.add('open');
+  }
+
+  function close() {
+    lightbox?.classList.remove('open');
+    lightboxImg.src = '';
+  }
+
+  document.querySelectorAll('.project-fotos figure img').forEach((img) => {
+    img.addEventListener('click', () => {
+      const el = img as HTMLImageElement;
+      open(el.src, el.alt);
+    });
+  });
+
+  lightbox?.addEventListener('click', close);
+  sluitKnop?.addEventListener('click', close);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
+
+  // Masonry: elke foto krijgt een grid-row-hoogte op basis van zijn eigen
+  // beeldverhouding, zodat foto's strak in elkaar passen met minimale
+  // tussenruimte, en sommige vanzelf groter/kleiner ogen dan andere.
+  function berekenSpan(img: HTMLImageElement) {
+    const figure = img.parentElement as HTMLElement;
+    const grid = figure?.closest('.project-fotos') as HTMLElement;
+    if (!figure || !grid || !img.naturalWidth) return;
+
+    const stijl = window.getComputedStyle(grid);
+    const rijHoogte = parseFloat(stijl.getPropertyValue('grid-auto-rows')) || 8;
+    const gap = parseFloat(stijl.getPropertyValue('gap')) || 0;
+
+    const verhouding = img.naturalHeight / img.naturalWidth;
+    const kolomBreedte = figure.offsetWidth;
+    const hoogte = kolomBreedte * verhouding;
+    const span = Math.ceil((hoogte + gap) / (rijHoogte + gap));
+
+    figure.style.gridRowEnd = `span ${span}`;
+  }
+
+  function initMasonry() {
+    document.querySelectorAll<HTMLImageElement>('.project-fotos img').forEach((img) => {
+      if (img.complete && img.naturalWidth) {
+        berekenSpan(img);
+      } else {
+        img.addEventListener('load', () => berekenSpan(img));
+      }
+    });
+  }
+
+  initMasonry();
+
+  let herberekenTimer: ReturnType<typeof setTimeout>;
+  window.addEventListener('resize', () => {
+    clearTimeout(herberekenTimer);
+    herberekenTimer = setTimeout(() => {
+      document.querySelectorAll<HTMLImageElement>('.project-fotos img').forEach(berekenSpan);
+    }, 150);
+  });
+</script>
