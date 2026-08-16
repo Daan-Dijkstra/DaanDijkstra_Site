@@ -1,7 +1,7 @@
 ---
 title: "Broedplaatsen"
 thumbnail: "/images/broedplaatsen1.jpg"
-beschrijving: "Meebouwen aan drie Amsterdamse broedplaatsen: Tolhuistuin, De Ceuvel en De Hoop in Zaandam."
+beschrijving: "Een halve levensloop in het maken van ruimte voor creatie: Tolhuistuin, De Ceuvel en De Hoop in Zaandam."
 volgorde: 4
 fotos:
   - src: "/images/broedplaatsen1.jpg"
@@ -12,28 +12,33 @@ fotos:
     alt: "Broedplaatsen - aanzicht 3"
 ---
 
-Drie broedplaatsen, drie fases van hetzelfde vak: een verlaten plek weer tot
-leven brengen met wat er al ligt.
+Een groot deel van mijn werk gaat niet over het maken van één object, maar
+over het maken van de plek waar dat kan gebeuren. Ruimte voor creatie,
+meestal tijdelijk, altijd gebouwd met wat er al lag. Drie broedplaatsen
+vormen daarin een doorlopende lijn.
 
-**Tolhuistuin**
-Bij de Tolhuistuin, het voormalige Shell-laboratorium aan het IJ in
-Amsterdam-Noord, deed ik het beheer. Ik heb er een werkplaats opgezet en
-maakte er mijn eerste bootbanken &mdash; het begin van wat later een vast
-onderdeel van mijn werk zou worden.
+Het begon bij de **Tolhuistuin**, het voormalige Shell-laboratorium aan het
+IJ in Amsterdam-Noord. Als beheerder haalde ik onder andere de hekken rond
+het terrein weg, en richtte ik er een werkplaats in. Daar maakte ik mijn
+eerste bootbanken &mdash; het eerste moment waarop hergebruikt materiaal en
+eigen ontwerp echt samenkwamen.
 
-**De Ceuvel**
-Vanuit de Tolhuistuin werd ik gevraagd voor De Ceuvel, de duurzame broedplaats
-op de voormalige scheepswerf aan het Van Hasseltkanaal. Ook daar zette ik een
-werkplaats op, en in de eerste twee jaar heb ik er veel gebouwd: het
-slingerende steigerpad tussen de woonboten, de boten die met fundering op de
-vervuilde kade werden gelegd, en het meubilair van het Ceuvel-caf&eacute;.
+Die ervaring nam ik mee naar **De Ceuvel**, de duurzame broedplaats op een
+voormalige scheepswerf aan het Van Hasseltkanaal. Ook hier begon ik met een
+werkplaats, maar dit keer op grotere schaal: in de eerste twee jaar bouwde
+ik het slingerende steigerpad tussen de woonboten, hielp ik de boten zelf
+met fundering op de vervuilde kade te leggen, en maakte ik het meubilair
+voor het Ceuvel-caf&eacute;. Van beheerder was ik inmiddels bouwer van een
+hele plek geworden.
 
-**De Hoop**
-Na De Ceuvel bouwde ik mee aan De Hoop in Zaandam &mdash; een maakgemeenschap
-van zo'n 16.000 m&sup2; in een voormalige kartonfabriek op de grens van
-Zaandam en Amsterdam. Een plek voor makers: honderden ateliers en
-werkplaatsen, zelf gebouwd door de mensen die er werken.
+Die stap naar schaal zette door bij **De Hoop** in Zaandam: een
+maakgemeenschap van zo'n 16.000 m&sup2; in een voormalige kartonfabriek, op
+de grens van Zaandam en Amsterdam. Geen los project meer, maar een compleet
+dorp van ateliers en werkplaatsen, grotendeels zelf gebouwd door de makers
+die er nu werken.
 
-Elke plek begon met hetzelfde uitgangspunt: geen sloop, maar hergebruik.
-Bestaand materiaal, een leeg gebouw of een vervuild terrein ombouwen tot een
-plek waar mensen kunnen maken.
+Drie plekken, één rode draad: niet slopen en opnieuw beginnen, maar een
+verlaten terrein, een leeg gebouw of een hoop overgebleven materiaal
+herkennen als het begin van iets nieuws. Het is het werk waar ik, zonder het
+in het begin zo te noemen, eigenlijk al mijn hele werkende leven mee bezig
+ben.
