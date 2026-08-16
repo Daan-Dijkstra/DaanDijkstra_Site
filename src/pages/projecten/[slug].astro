@@ -22,16 +22,31 @@ const { Content } = await project.render();
     <Content />
   </section>
 
-  <section>
-    <span class="section-label">Fotogalerij</span>
-    <div class="project-fotos">
-      {project.data.fotos.map((foto) => (
-        <figure>
-          <img src={foto.src} alt={foto.alt} loading="lazy" />
-        </figure>
-      ))}
-    </div>
-  </section>
+  {project.data.categorieen && project.data.categorieen.length > 0 ? (
+    project.data.categorieen.map((categorie) => (
+      <section>
+        <span class="section-label">{categorie.naam}</span>
+        <div class="project-fotos">
+          {categorie.fotos.map((foto) => (
+            <figure>
+              <img src={foto.src} alt={foto.alt} loading="lazy" />
+            </figure>
+          ))}
+        </div>
+      </section>
+    ))
+  ) : (
+    <section>
+      <span class="section-label">Fotogalerij</span>
+      <div class="project-fotos">
+        {project.data.fotos.map((foto) => (
+          <figure>
+            <img src={foto.src} alt={foto.alt} loading="lazy" />
+          </figure>
+        ))}
+      </div>
+    </section>
+  )}
 
   <p><a href="/portfolio" class="btn btn-secundair">&larr; Terug naar portfolio</a></p>
 </BaseLayout>
