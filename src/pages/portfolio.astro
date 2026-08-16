@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { bepaalThumbnail } from '../lib/project-images';
 
 const projecten = (await getCollection('projecten')).sort(
   (a, b) => a.data.volgorde - b.data.volgorde
@@ -13,14 +14,17 @@ const projecten = (await getCollection('projecten')).sort(
     <h2 class="section-titel">Mijn projecten en producten</h2>
     <p>Klik op een project voor meer foto's en uitleg.</p>
     <div class="gallery">
-      {projecten.map((project) => (
-        <figure>
-          <a href={`/projecten/${project.slug}`}>
-            <img src={project.data.thumbnail} alt={project.data.title} />
-            <figcaption>{project.data.title}</figcaption>
-          </a>
-        </figure>
-      ))}
+      {projecten.map((project) => {
+        const thumb = bepaalThumbnail(project.data);
+        return (
+          <figure>
+            <a href={`/projecten/${project.slug}`}>
+              {thumb && <img src={thumb} alt={project.data.title} />}
+              <figcaption>{project.data.title}</figcaption>
+            </a>
+          </figure>
+        );
+      })}
     </div>
   </section>
 </BaseLayout>

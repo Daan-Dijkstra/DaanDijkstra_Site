@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { leesProjectFotos } from '../../lib/project-images';
 
 export async function getStaticPaths() {
   const projecten = await getCollection('projecten');
@@ -12,6 +13,15 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await project.render();
+
+const categorieen = project.data.categorieMappen?.map((cat) => ({
+  naam: cat.naam,
+  fotos: leesProjectFotos(cat.map, `${project.data.title} - ${cat.naam}`),
+}));
+
+const enkeleFotos = project.data.map
+  ? leesProjectFotos(project.data.map, project.data.title)
+  : [];
 ---
 
 <BaseLayout titel={project.data.title} actief="portfolio" beschrijving={project.data.beschrijving}>
@@ -22,8 +32,8 @@ const { Content } = await project.render();
     <Content />
   </section>
 
-  {project.data.categorieen && project.data.categorieen.length > 0 ? (
-    project.data.categorieen.map((categorie) => (
+  {categorieen && categorieen.length > 0 ? (
+    categorieen.map((categorie) => (
       <section>
         <span class="section-label">{categorie.naam}</span>
         <div class="project-fotos">
@@ -39,7 +49,7 @@ const { Content } = await project.render();
     <section>
       <span class="section-label">Fotogalerij</span>
       <div class="project-fotos">
-        {project.data.fotos.map((foto) => (
+        {enkeleFotos.map((foto) => (
           <figure>
             <img src={foto.src} alt={foto.alt} loading="lazy" />
           </figure>

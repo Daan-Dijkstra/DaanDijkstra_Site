@@ -1,25 +1,12 @@
 ---
 title: "Up-Cycle"
-thumbnail: "/images/upcycle/eigen/upcycle-eigen.jpg"
 beschrijving: "Zelfgemaakte objecten uit hergebruikt materiaal, en de reparaties en ideeën van anderen die me inspireren."
 volgorde: 5
-categorieen:
+categorieMappen:
   - naam: "Eigen werk"
-    fotos:
-      - src: "/images/upcycle/eigen/upcycle-eigen.jpg"
-        alt: "Up-Cycle eigen werk - object 1"
-      - src: "/images/upcycle/eigen/upcycle-eigen (1).jpg"
-        alt: "Up-Cycle eigen werk - object 2"
-      - src: "/images/upcycle/eigen/upcycle-eigen (2).jpg"
-        alt: "Up-Cycle eigen werk - object 3"
+    map: "Upcycle/eigen"
   - naam: "Inspiratie"
-    fotos:
-      - src: "/images/upcycle/inspiratie/upcycle-inspiratie.jpg"
-        alt: "Up-Cycle inspiratie - vondst 1"
-      - src: "/images/upcycle/inspiratie/upcycle-inspiratie (1).jpg"
-        alt: "Up-Cycle inspiratie - vondst 2"
-      - src: "/images/upcycle/inspiratie/upcycle-inspiratie (2).jpg"
-        alt: "Up-Cycle inspiratie - vondst 3"
+    map: "Upcycle/inspiratie"
 ---
 
 Dit project bestaat uit twee kanten van dezelfde interesse.

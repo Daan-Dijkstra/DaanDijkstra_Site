@@ -1,15 +1,8 @@
 ---
 title: "Broedplaatsen"
-thumbnail: "/images/broedplaatsen/broedplaatsen.jpg"
 beschrijving: "Een halve levensloop in het maken van ruimte voor creatie: Tolhuistuin, De Ceuvel en De Hoop in Zaandam."
 volgorde: 4
-fotos:
-  - src: "/images/broedplaatsen/broedplaatsen.jpg"
-    alt: "Broedplaatsen - aanzicht 1"
-  - src: "/images/broedplaatsen/broedplaatsen (1).jpg"
-    alt: "Broedplaatsen - aanzicht 2"
-  - src: "/images/broedplaatsen/broedplaatsen (2).jpg"
-    alt: "Broedplaatsen - aanzicht 3"
+map: "Broedplaats"
 ---
 
 Een groot deel van mijn werk gaat niet over het maken van één object, maar

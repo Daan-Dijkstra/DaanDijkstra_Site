@@ -1,15 +1,8 @@
 ---
 title: "Domes"
-thumbnail: "/images/domes/domes.jpg"
 beschrijving: "Geodetische koepels gebouwd van herwonnen staal, van Nederlandse festivals tot een permacultuur-farm in Oeganda."
 volgorde: 3
-fotos:
-  - src: "/images/domes/domes.jpg"
-    alt: "Domes - aanzicht 1"
-  - src: "/images/domes/domes (1).jpg"
-    alt: "Domes - aanzicht 2"
-  - src: "/images/domes/domes (2).jpg"
-    alt: "Domes - aanzicht 3"
+map: "Domes"
 ---
 
 De domes zijn ontstaan uit overschot. Tijdens mijn tijd als beheerder van de
