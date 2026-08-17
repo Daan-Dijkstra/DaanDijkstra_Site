@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://daandijkstra.com/sitemap.xml
+Sitemap: https://daandijkstra.com/sitemap-index.xml

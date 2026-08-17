@@ -1,21 +1,25 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 import { optimizeImages } from './scripts/optimize-images.mjs';
+
+// Eigen integratie voor beeldoptimalisatie, met alle lifecycle-hooks
+// netjes gedefinieerd zodat andere integraties (zoals sitemap) correct
+// blijven werken.
+function beeldoptimalisatie() {
+  return {
+    name: 'dd-beeldoptimalisatie',
+    hooks: {
+      'astro:build:start': async () => {
+        await optimizeImages();
+      },
+      'astro:server:setup': async () => {
+        await optimizeImages();
+      },
+    },
+  };
+}
 
 export default defineConfig({
   site: 'https://daandijkstra.com',
-  integrations: [
-    {
-      name: 'dd-beeldoptimalisatie',
-      hooks: {
-        // Draait vlak voordat de site gebouwd wordt (ook op Vercel)
-        'astro:build:start': async () => {
-          await optimizeImages();
-        },
-        // Draait bij het starten van de lokale preview (npm run dev)
-        'astro:server:setup': async () => {
-          await optimizeImages();
-        },
-      },
-    },
-  ],
+  integrations: [beeldoptimalisatie(), sitemap()],
 });

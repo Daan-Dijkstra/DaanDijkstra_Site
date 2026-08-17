@@ -5,13 +5,18 @@ interface Props {
   titel: string;
   beschrijving?: string;
   actief?: 'home' | 'portfolio' | 'over' | 'contact';
+  deelplaatje?: string;
 }
 
 const {
   titel,
   beschrijving = "DD-Industries - vakwerk van Daan Dijkstra. Maatwerk, restauratie en hergebruikt materiaal.",
   actief = '',
+  deelplaatje = "/images-opt/Broedplaats/Ceuvel - Daan-03.webp",
 } = Astro.props;
+
+// Social media vereist een absolute URL voor het deelplaatje
+const deelplaatjeUrl = new URL(deelplaatje, Astro.site).href;
 ---
 
 <!DOCTYPE html>
@@ -25,6 +30,17 @@ const {
     <meta property="og:title" content={`${titel} - DD-Industries`} />
     <meta property="og:description" content={beschrijving} />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content={deelplaatjeUrl} />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site).href} />
+    <meta property="og:site_name" content="DD-Industries" />
+    <meta property="og:locale" content="nl_NL" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${titel} - DD-Industries`} />
+    <meta name="twitter:description" content={beschrijving} />
+    <meta name="twitter:image" content={deelplaatjeUrl} />
+
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
