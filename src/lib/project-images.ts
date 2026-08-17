@@ -12,7 +12,8 @@ export interface ProjectFoto {
 function volgnummer(bestandsnaam: string): number {
   const match = bestandsnaam.match(/\((\d+)\)/);
   if (match) return parseInt(match[1], 10);
-  return 0;
+  // Bestanden zonder (nummer) horen achteraan, niet vooraan
+  return Number.MAX_SAFE_INTEGER;
 }
 
 /**
@@ -47,7 +48,12 @@ export function leesProjectFotos(mapNaam: string, altPrefix: string): ProjectFot
     .readdirSync(dir)
     .filter((naam) => IMAGE_EXTENSIES.includes(path.extname(naam).toLowerCase()));
 
-  bestanden.sort((a, b) => volgnummer(a) - volgnummer(b));
+  bestanden.sort((a, b) => {
+    const verschil = volgnummer(a) - volgnummer(b);
+    if (verschil !== 0) return verschil;
+    // Bij gelijk (of geen) nummer: alfabetisch, zodat de volgorde stabiel is
+    return a.localeCompare(b);
+  });
 
   return bestanden.map((naam, i) => ({
     src: bepaalSrc(mapNaam, naam),

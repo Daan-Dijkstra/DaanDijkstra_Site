@@ -250,6 +250,51 @@ main {
 }
 
 /* Over mij */
+.over-home-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 1.5rem;
+}
+
+.over-home-tekst p:first-child {
+  margin-top: 0;
+}
+
+.over-home-foto {
+  margin: 0;
+  border: 2px solid rgba(237, 231, 218, 0.14);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.over-home-foto img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.over-home-foto figcaption {
+  padding: 0.6rem 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--been-gedempt);
+  background: var(--graphiet-licht);
+}
+
+@media (max-width: 720px) {
+  .over-home-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .over-home-foto {
+    order: -1;
+    max-width: 340px;
+  }
+}
+
 .over-grid {
   display: grid;
   grid-template-columns: 280px 1fr;
