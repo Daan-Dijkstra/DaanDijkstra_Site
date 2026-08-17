@@ -4,7 +4,7 @@ import '../styles/global.css';
 interface Props {
   titel: string;
   beschrijving?: string;
-  actief?: 'home' | 'portfolio' | 'contact';
+  actief?: 'home' | 'portfolio' | 'over' | 'contact';
 }
 
 const {
@@ -56,6 +56,7 @@ const {
           <ul>
             <li><a href="/" class={actief === 'home' ? 'actief' : ''}>Home</a></li>
             <li><a href="/#projecten" class={actief === 'portfolio' ? 'actief' : ''}>Portfolio</a></li>
+            <li><a href="/over" class={actief === 'over' ? 'actief' : ''}>Over mij</a></li>
             <li><a href="/contact" class={actief === 'contact' ? 'actief' : ''}>Contact</a></li>
           </ul>
         </nav>
