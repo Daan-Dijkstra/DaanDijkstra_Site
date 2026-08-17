@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const IMAGE_EXTENSIES = ['.jpg', '.jpeg', '.png', '.webp'];
+const GEOPTIMALISEERD_DIR = path.join(process.cwd(), 'public', 'images-opt');
 
 export interface ProjectFoto {
   src: string;
@@ -15,11 +16,25 @@ function volgnummer(bestandsnaam: string): number {
 }
 
 /**
+ * Geeft het pad naar de geoptimaliseerde WebP-versie terug als die bestaat,
+ * anders het pad naar het originele bestand. De mapnaam behoudt zijn slashes
+ * (voor submappen zoals "Upcycle/eigen"); alleen de bestandsnaam wordt
+ * ge-encodeerd zodat spaties en haakjes goed in de URL komen.
+ */
+function bepaalSrc(mapNaam: string, naam: string): string {
+  const webpNaam = naam.replace(/\.(jpe?g|png)$/i, '.webp');
+  const optPad = path.join(GEOPTIMALISEERD_DIR, mapNaam, webpNaam);
+
+  if (fs.existsSync(optPad)) {
+    return `/images-opt/${mapNaam}/${encodeURIComponent(webpNaam)}`;
+  }
+  return `/images/${mapNaam}/${encodeURIComponent(naam)}`;
+}
+
+/**
  * Leest alle afbeeldingen uit public/images/<mapNaam> in en geeft ze
  * gesorteerd terug (kaal bestand eerst, dan (1), (2), (3)...).
  * mapNaam mag ook een subpad zijn, bv. "Upcycle/eigen".
- * Hoofdletters in mapnaam en bestandsextensie (.jpg vs .JPG) worden
- * ondersteund zoals ze op schijf staan.
  */
 export function leesProjectFotos(mapNaam: string, altPrefix: string): ProjectFoto[] {
   const dir = path.join(process.cwd(), 'public', 'images', mapNaam);
@@ -35,7 +50,7 @@ export function leesProjectFotos(mapNaam: string, altPrefix: string): ProjectFot
   bestanden.sort((a, b) => volgnummer(a) - volgnummer(b));
 
   return bestanden.map((naam, i) => ({
-    src: `/images/${mapNaam}/${encodeURIComponent(naam)}`,
+    src: bepaalSrc(mapNaam, naam),
     alt: `${altPrefix} - aanzicht ${i + 1}`,
   }));
 }

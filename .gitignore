@@ -5,6 +5,9 @@ node_modules/
 dist/
 .astro/
 
+# Automatisch gegenereerde, geoptimaliseerde afbeeldingen
+public/images-opt/
+
 # Environment
 .env
 .env.production
