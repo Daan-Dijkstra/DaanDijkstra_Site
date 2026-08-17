@@ -55,12 +55,21 @@ export async function optimizeImages() {
     }
 
     await mkdir(path.dirname(doel), { recursive: true });
-    await sharp(bron)
-      .rotate() // corrigeer stand op basis van EXIF (voorkomt gedraaide foto's)
-      .resize({ width: MAX_BREEDTE, withoutEnlargement: true })
-      .webp({ quality: KWALITEIT })
-      .toFile(doel);
-    gedaan++;
+    try {
+      await sharp(bron)
+        .rotate() // corrigeer stand op basis van EXIF (voorkomt gedraaide foto's)
+        .resize({ width: MAX_BREEDTE, withoutEnlargement: true })
+        .webp({ quality: KWALITEIT })
+        .toFile(doel);
+      gedaan++;
+    } catch (fout) {
+      // Eén onleesbare/corrupte foto mag de hele build niet laten falen.
+      // De pagina valt dan automatisch terug op het originele bestand.
+      console.warn(
+        `[beeldoptimalisatie] WAARSCHUWING: kon "${bron}" niet comprimeren (${fout.message}). ` +
+          `Origineel bestand wordt ongewijzigd gebruikt.`
+      );
+    }
   }
 
   console.log(
