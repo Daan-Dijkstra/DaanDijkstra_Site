@@ -62,15 +62,20 @@ export function leesProjectFotos(mapNaam: string, altPrefix: string): ProjectFot
 }
 
 /**
- * Bepaalt de thumbnail voor een project: de eerste foto uit de opgegeven
- * map, of de eerste foto uit de eerste categorie-map als het project
- * categorieën gebruikt.
+ * Bepaalt de thumbnail voor een project. Volgorde van voorrang:
+ * 1. Een handmatig opgegeven bestandsnaam (data.thumbnail)
+ * 2. De eerste foto uit de opgegeven map
+ * 3. De eerste foto uit de eerste categorie-map (bij projecten met categorieën)
  */
 export function bepaalThumbnail(data: {
   map?: string;
   categorieMappen?: { naam: string; map: string }[];
+  thumbnail?: string;
   title: string;
 }): string | null {
+  if (data.thumbnail && data.map) {
+    return bepaalSrc(data.map, data.thumbnail);
+  }
   if (data.map) {
     const fotos = leesProjectFotos(data.map, data.title);
     return fotos[0]?.src ?? null;
